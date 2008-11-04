@@ -48,7 +48,7 @@ LIBDIRS	:=
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 #---------------------------------------------------------------------------------
 
-export OUTPUT	:=	$(CURDIR)/$(TARGET)
+export OUTPUT	:=	$(CURDIR)/boot
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
 					$(foreach dir,$(DATA),$(CURDIR)/$(dir))
@@ -91,7 +91,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES), -iquote $(CURDIR)/$(dir)) \
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) \
 					-L$(LIBOGC_LIB)
 
-export OUTPUT	:=	$(CURDIR)/$(TARGET)
+export OUTPUT	:=	$(CURDIR)/boot
 .PHONY: $(BUILD) clean
 
 #---------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ clean:
 
 #---------------------------------------------------------------------------------
 run:
-	psoload $(TARGET).dol
+	wiiload $(OUTPUT).dol
 
 #---------------------------------------------------------------------------------
 reload:

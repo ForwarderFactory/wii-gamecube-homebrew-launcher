@@ -1,0 +1,13 @@
+v1.0 by MegaMan
+---------------
+Created by MegaMan
+
+
+v1.1 by Hell Hibou
+-------------------
+
+- Add command line interface for Wii Homebrew Launcher
+- Add loading dol file from USB Flash and SDgecko (in command line only)
+- PAL 60Hz mode fix
+- Remove reading GC game ID code
+- Add DVD light when loading file
