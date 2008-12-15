@@ -1,4 +1,4 @@
-GCBooter Homebrew v1.1 by Mega Man
+GCBooter Homebrew v1.0 by Mega Man
                   v1.2 by Hell Hibou
 
 Info:

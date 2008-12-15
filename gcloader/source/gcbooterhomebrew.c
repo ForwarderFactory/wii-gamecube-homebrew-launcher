@@ -1,6 +1,6 @@
 /*
 	GCBooter Homebrew v1.0 by Mega Man
-	Version 1.1 by Hell Hibou
+	Version 1.2 by Hell Hibou
 */
 
 #include <gccore.h>	
@@ -31,31 +31,37 @@ int load_file (const char *filename)
 	
 	SplitDrivePath (filename, &Drivename, &Path);
 	
-	if (stricmp (Drivename, "frontsd:") == 0) 
+	if (stricmp (Drivename, "fat3:") == 0) 
 	{ 
+		fatMountNormalInterface (PI_INTERNAL_SD, 4);
 		fatSetDefaultInterface (PI_INTERNAL_SD);
-		fin = fopen(Path, "rb");
+		fatEnableReadAhead (PI_INTERNAL_SD, 32, 64);
 		FsId = PI_INTERNAL_SD;
 	}
-	else if (stricmp (Drivename, "sdgeckoa:") == 0)
+	else if (stricmp (Drivename, "fat1:") == 0)
 	{
+		fatMountNormalInterface (PI_SDGECKO_A, 4);
 		fatSetDefaultInterface (PI_SDGECKO_A);
-		fin = fopen(Path, "rb");  
+		fatEnableReadAhead (PI_SDGECKO_A, 32, 64);
 		FsId = PI_SDGECKO_A;
 	}
-	else if (stricmp (Drivename, "sdgeckob:") == 0)
+	else if (stricmp (Drivename, "fat2:") == 0)
 	{
+		fatMountNormalInterface (PI_SDGECKO_B, 4);
 		fatSetDefaultInterface (PI_SDGECKO_B);
-		fin = fopen(Path, "rb");
+		fatEnableReadAhead (PI_SDGECKO_B, 32, 64);
 		FsId = PI_SDGECKO_B;
 	}
-	else if (stricmp (Drivename, "USB:") == 0)
+	else if (stricmp (Drivename, "fat4:") == 0)
 	{
+		fatMountNormalInterface (PI_USBSTORAGE, 4);
 		fatSetDefaultInterface (PI_USBSTORAGE);
-		fin = fopen(Path, "rb");
+		fatEnableReadAhead (PI_USBSTORAGE, 32, 64);
 		FsId = PI_USBSTORAGE;
 	}
 	else { return -3; }
+	
+	fin = fopen(filename, "rb");
 	
 	if (fin == NULL) 
 	{
@@ -139,7 +145,7 @@ int main (int argc, char **argv)
 	if (argc < 2)
 	{
 		printf ("Loading start.dol from Front-SD...\n");
-		rv = load_file("frontsd:/start.dol");
+		rv = load_file("fat:/start.dol");
 	}
 	else
 	{

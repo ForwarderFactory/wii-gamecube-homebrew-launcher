@@ -1,9 +1,9 @@
-v1.0 by MegaMan
+v0.2 by MegaMan
 ---------------
 Created by MegaMan
 
 
-v1.1 by Hell Hibou
+v0.2.1 by Hell Hibou
 -------------------
 
 - Add command line interface for Wii Homebrew Launcher
@@ -11,3 +11,8 @@ v1.1 by Hell Hibou
 - PAL 60Hz mode fix
 - Remove reading GC game ID code
 - Add DVD light when loading file
+
+v0.2.2 by Hell Hibou
+-------------------
+- Add fatEnableReadAhead and SDHC support
+- Using standard libfat device name (fat1, fat2, ...) for WHL 0.12
